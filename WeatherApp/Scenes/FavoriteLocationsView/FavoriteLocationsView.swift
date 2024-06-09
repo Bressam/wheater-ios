@@ -27,48 +27,59 @@ struct FavoriteLocationsView: View {
     // MARK: - View
     var body: some View {
         NavigationView {
-            List {
-                if items.isEmpty {
-                    ContentUnavailableView {
-                        Label("No favorite locations yet!",
-                              systemImage: "list.bullet.below.rectangle")
-                    } description: {
-                        Text("New favorite locations you add will appear here.")
+                contentList
+                .background(Gradient(colors:[
+                    .init(red: 2 / 255, green: 0 / 255, blue: 36 / 255),
+                    .init(red: 9 / 255, green: 9 / 255, blue: 121 / 255)
+                ]))
+        }
+    }
+    
+    private var contentList: some View {
+        List {
+            if items.isEmpty {
+                ContentUnavailableView {
+                    Label("No favorite locations yet!",
+                          systemImage: "list.bullet.below.rectangle")
+                } description: {
+                    Text("New favorite locations you add will appear here.")
+                }
+                
+            } else {
+                ForEach(items) { item in
+                    NavigationLink {
+                        WeatherView(viewModel: viewModel.getWeatherViewModel(for: item))
+                    } label: {
+                        Text(item.cityName ?? "Unknown Location")
                     }
-
-                } else {
-                    ForEach(items) { item in
-                        NavigationLink {
-                            WeatherView(viewModel: viewModel.getWeatherViewModel(for: item))
-                        } label: {
-                            Text(item.creationDate!, formatter: itemFormatter)
-                        }
-                    }
-                    .onDelete(perform: deleteItems)
+                }
+                .onDelete(perform: deleteItems)
+            }
+        }
+        .listRowBackground(Color.clear)
+        .scrollContentBackground(.hidden)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                EditButton()
+            }
+            ToolbarItem {
+                Button(action: addItem) {
+                    Label("Add Item", systemImage: "plus")
                 }
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-            Text("Select an item")
         }
     }
 
     private func addItem() {
         withAnimation {
+        Task {
             let newItem = FavoriteLocation(context: viewContext)
             newItem.creationDate = Date()
-            newItem.cityName = "Curitiba"
-            newItem.latitude = -25.441105
-            newItem.longitude = -49.276855
-
+            let currentLocationData = try await viewModel.getCurrentLocationData()
+            newItem.cityName = currentLocationData.cityName
+            newItem.latitude = currentLocationData.latitude
+            newItem.longitude = currentLocationData.longitude
+            
             do {
                 try viewContext.save()
             } catch {
@@ -77,6 +88,7 @@ struct FavoriteLocationsView: View {
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
+                    }
         }
     }
 

@@ -8,6 +8,12 @@
 import Foundation
 import CoreLocation
 
+struct LocationCoordinate {
+    let cityName: String
+    let latitude: Double
+    let longitude: Double
+}
+
 class WeatherService: WeatherProvider {
     // MARK: - Properties
     let dataProvider: any WeatherProvider
@@ -20,6 +26,18 @@ class WeatherService: WeatherProvider {
     }
 
     // MARK: - Data provider Methods
+    func getCurrentLocation() async throws -> LocationCoordinate {
+        guard let currentCoordinate = try await locationManager.getCurrentLocation()
+        else {
+            throw WheaterError.somethingWentWrong
+        }
+        let cityName = await getCityName(latitude: currentCoordinate.latitude, longitude: currentCoordinate.longitude)
+        let locationCoordinate = LocationCoordinate(cityName: cityName,
+                                                    latitude: currentCoordinate.latitude,
+                                                    longitude: currentCoordinate.longitude)
+        return locationCoordinate
+    }
+
     func getCurrentWeather() async throws -> LocationWeather {
         guard let currentCoordinate = try await locationManager.getCurrentLocation()
         else {

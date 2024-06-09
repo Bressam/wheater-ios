@@ -17,4 +17,8 @@ class FavoriteLocationsViewModel: ObservableObject {
     func getWeatherViewModel(for customLocation: FavoriteLocation) -> WeatherViewModel {
         return .init(weatherService: weatherService, customLocation: customLocation)
     }
+    
+    func getCurrentLocationData() async throws -> LocationCoordinate {
+        return try await weatherService.getCurrentLocation()
+    }
 }
