@@ -36,7 +36,7 @@ class WeatherViewModel: ObservableObject {
         let calendar = Calendar.current
         let hour = calendar.component(.hour, from: date)
         
-        return hour > 18 ? .rainy : .sunny
+        return hour > 18 ? .dark : .sunny
     }
 }
 

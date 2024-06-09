@@ -9,12 +9,12 @@ import SwiftUI
 
 
 enum WeatherCategory {
-    case sunny, rainy
+    case sunny, dark
     
     var titleColor: Color {
         switch self {
         case .sunny: return .yellow
-        case .rainy: return .white
+        case .dark: return .white
         }
     }
     
@@ -25,7 +25,7 @@ enum WeatherCategory {
                 .init(red: 0 / 255, green: 212 / 255, blue: 255 / 255),
                 .init(red: 9 / 255, green: 9 / 255, blue: 121 / 255),
             ]
-        case .rainy:
+        case .dark:
             return [
                 .init(red: 2 / 255, green: 0 / 255, blue: 36 / 255),
                 .init(red: 9 / 255, green: 9 / 255, blue: 121 / 255)
@@ -36,21 +36,21 @@ enum WeatherCategory {
     var weatherIconName: String {
         switch self {
         case .sunny: return "sun.max.fill"
-        case .rainy: return "cloud.rain.fill"
+        case .dark: return "cloud.rain.fill"
         }
     }
     
     var widgetBackground: Color {
         switch self {
         case .sunny: return Color.white.opacity(0.2)
-        case .rainy: return Color.white.opacity(0.16)
+        case .dark: return Color.white.opacity(0.16)
         }
     }
     
     var iconsColor: Color {
         switch self {
         case .sunny: return .yellow
-        case .rainy: return .init(red: 2 / 255, green: 0 / 255, blue: 60 / 255)
+        case .dark: return .init(red: 2 / 255, green: 0 / 255, blue: 60 / 255)
         }
     }
 }
