@@ -16,6 +16,7 @@
 		1855BB2B2C156A3D005E2C5A /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855BB2A2C156A3D005E2C5A /* WeatherView.swift */; };
 		1855BB2D2C156A47005E2C5A /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855BB2C2C156A47005E2C5A /* WeatherViewModel.swift */; };
 		187E777F2C15723F000BF9E4 /* FavoriteLocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E777E2C15723F000BF9E4 /* FavoriteLocationsViewModel.swift */; };
+		187E77822C15782C000BF9E4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E77812C15782C000BF9E4 /* LocationManager.swift */; };
 		18F0305E2C127913003A7943 /* WeatherAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F0305D2C127913003A7943 /* WeatherAppApp.swift */; };
 		18F030602C127913003A7943 /* FavoriteLocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F0305F2C127913003A7943 /* FavoriteLocationsView.swift */; };
 		18F030622C127915003A7943 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F030612C127915003A7943 /* Assets.xcassets */; };
@@ -34,6 +35,7 @@
 		1855BB2A2C156A3D005E2C5A /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		1855BB2C2C156A47005E2C5A /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		187E777E2C15723F000BF9E4 /* FavoriteLocationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteLocationsViewModel.swift; sourceTree = "<group>"; };
+		187E77812C15782C000BF9E4 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		18F0305A2C127913003A7943 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F0305D2C127913003A7943 /* WeatherAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppApp.swift; sourceTree = "<group>"; };
 		18F0305F2C127913003A7943 /* FavoriteLocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteLocationsView.swift; sourceTree = "<group>"; };
@@ -83,6 +85,7 @@
 		1855BB192C1553EA005E2C5A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				187E77802C157821000BF9E4 /* Location */,
 				1855BB1F2C15546F005E2C5A /* Wheater */,
 			);
 			path = Services;
@@ -131,6 +134,14 @@
 				187E777E2C15723F000BF9E4 /* FavoriteLocationsViewModel.swift */,
 			);
 			path = FavoriteLocationsView;
+			sourceTree = "<group>";
+		};
+		187E77802C157821000BF9E4 /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				187E77812C15782C000BF9E4 /* LocationManager.swift */,
+			);
+			path = Location;
 			sourceTree = "<group>";
 		};
 		18F030512C127913003A7943 = {
@@ -252,6 +263,7 @@
 				187E777F2C15723F000BF9E4 /* FavoriteLocationsViewModel.swift in Sources */,
 				1855BB222C15563D005E2C5A /* WheaterServiceFactory.swift in Sources */,
 				18F030672C127915003A7943 /* Persistence.swift in Sources */,
+				187E77822C15782C000BF9E4 /* LocationManager.swift in Sources */,
 				1855BB1B2C15544C005E2C5A /* WheaterService.swift in Sources */,
 				18F030602C127913003A7943 /* FavoriteLocationsView.swift in Sources */,
 				18F0305E2C127913003A7943 /* WeatherAppApp.swift in Sources */,
@@ -391,6 +403,8 @@
 				DEVELOPMENT_TEAM = T9ZJWJGCBB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to provide your local weather data";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to provide your local weather data";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -420,6 +434,8 @@
 				DEVELOPMENT_TEAM = T9ZJWJGCBB;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "We need your location to provide your local weather data";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to provide your local weather data";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

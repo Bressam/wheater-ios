@@ -23,6 +23,6 @@ class WeatherServiceFactory {
             dataProvider = RemoteWeatherProvider()
         }
         
-        return .init(dataProvider: dataProvider)
+        return .init(dataProvider: dataProvider, locationManager: .init())
     }
 }
