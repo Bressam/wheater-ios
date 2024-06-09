@@ -55,9 +55,11 @@ struct CurrentWeatherUnits: Codable {
 struct HourlyWeatherData: Codable {
     let time: [String]
     let temperature2m: [Float]
+    let humidity: [Float]
     
     enum CodingKeys: String, CodingKey {
         case time
         case temperature2m = "temperature_2m"
+        case humidity = "relative_humidity_2m"
     }
 }

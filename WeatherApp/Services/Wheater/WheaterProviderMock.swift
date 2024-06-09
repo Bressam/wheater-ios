@@ -26,6 +26,9 @@ class WeatherProviderMock: WeatherProvider {
                      ], temperature2m: [
                         10,
                         11
+                     ], humidity: [
+                        26,
+                        28
                      ]))
     }
 }
