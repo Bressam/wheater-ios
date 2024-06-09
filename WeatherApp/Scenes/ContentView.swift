@@ -50,6 +50,16 @@ struct ContentView: View {
             }
             Text("Select an item")
         }
+        .onAppear(perform: {
+            Task{
+                do{
+                    try await WeatherServiceFactory.shared.createWeatherService(mocked: false)
+                        .getWeather(latitude: -25.441105, longitude: -49.276855)
+                }catch{
+                    print(error)
+                }
+            }
+        })
     }
 
     private func addItem() {

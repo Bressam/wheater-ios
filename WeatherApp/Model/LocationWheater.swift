@@ -11,15 +11,20 @@ import Foundation
 struct LocationWeather: Codable {
     typealias LocationDegrees = Double
 
-    let latitude: LocationDegrees
-    let longitude: LocationDegrees
-    let cityName: String
+    let latitude: LocationDegrees?
+    let longitude: LocationDegrees?
+    var cityName: String? = nil
     let current: CurrentWeather
-    let hourlyData: WeatherData
+    let hourlyData: HourlyWeatherData
+    
+    enum CodingKeys: String, CodingKey {
+        case hourlyData = "hourly"
+        case latitude, longitude, cityName, current
+    }
 }
 
 struct CurrentWeather: Codable {
-    let time: Date
+    let time: String
     let interval: Int
     let temperature: Float
     let windSpeed: Float
@@ -31,11 +36,12 @@ struct CurrentWeather: Codable {
     }
 }
 
-struct WeatherData: Codable {
-    let hourly: Hourly
+struct HourlyWeatherData: Codable {
+    let time: [String]
+    let temperature2m: [Float]
     
-    struct Hourly: Codable {
-        let time: [Date]
-        let temperature2m: [Float]
+    enum CodingKeys: String, CodingKey {
+        case time
+        case temperature2m = "temperature_2m"
     }
 }
