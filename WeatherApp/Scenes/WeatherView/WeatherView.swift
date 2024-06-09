@@ -88,10 +88,38 @@ struct WeatherView: View {
         VStack(alignment: .leading) {
             headerView
             temperatureView
+            hourlyTempView
+                .padding(.top, 40)
             Spacer()
             Text("Hello \(viewModel.getCityName())!\nWeather: \(viewModel.getWeatherTemperature())\n\(viewModel.getWeatherWindSpeed())")
             Spacer()
         }.safeAreaPadding(.top, 80)
+    }
+    
+    private var hourlyTempView: some View {
+        VStack(alignment: .leading) {
+            Text("Forecast")
+                .font(.system(size: 22))
+                .fontWeight(.bold)
+                .foregroundStyle(.white)
+            ScrollView(.horizontal) {
+                HStack {
+                    ForEach(viewModel.getHourlyDetails(), id: \.date) { hourlyTemp in
+                        ZStack {
+                            RoundedRectangle(cornerRadius: 20.0)
+                                .fill(Color.white.opacity(0.2))
+                            VStack(spacing: 10) {
+                                Text(hourlyTemp.temp)
+                                    .font(.system(size: 18))
+                                Image(systemName: "thermometer.sun")
+                                Text("at \(hourlyTemp.date)")
+                                    .font(.callout)
+                            }.foregroundStyle(.white.opacity(80))
+                        }.frame(width: 110, height: 110)
+                    }
+                }
+            }
+        }.padding()
     }
     
     private var temperatureView: some View {

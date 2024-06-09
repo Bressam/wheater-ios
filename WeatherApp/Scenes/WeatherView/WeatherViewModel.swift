@@ -83,4 +83,21 @@ extension WeatherViewModel {
         
         return "max: \(maxTemp)\(weatherData.currentUnits.temperatureUnit)"
     }
+    
+    struct HourlyData {
+        let date: String
+        let temp: String
+    }
+    
+    func getHourlyDetails() -> [HourlyData] {
+        guard let weatherData else { return [] }
+        
+        var hourlyData: [HourlyData] = []
+        for (temp, time) in zip(weatherData.hourlyData.temperature2m, weatherData.hourlyData.time) {
+            let hourString = String(time.suffix(from: time.firstIndex(of: "T")!).dropFirst())
+            let tempString = numberFormatter.string(from: temp as NSNumber)! + weatherData.currentUnits.temperatureUnit
+            hourlyData.append(.init(date: hourString, temp: tempString))
+        }
+        return hourlyData
+    }
 }
