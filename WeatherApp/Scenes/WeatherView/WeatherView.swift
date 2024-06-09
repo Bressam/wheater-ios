@@ -82,6 +82,13 @@ struct WeatherView: View {
             case .rainy: return "cloud.rain.fill"
             }
         }
+        
+        var widgetBackground: Color {
+            switch self {
+            case .sunny: return Color.white.opacity(0.2)
+            case .rainy: return Color(red: 9 / 255, green: 9 / 255, blue: 121 / 255).opacity(0.2)
+            }
+        }
     }
     
     private var locationWeatherDetailsView: some View {
@@ -90,10 +97,49 @@ struct WeatherView: View {
             temperatureView
             hourlyTempView
                 .padding(.top, 40)
-            Spacer()
-            Text("Hello \(viewModel.getCityName())!\nWeather: \(viewModel.getWeatherTemperature())\n\(viewModel.getWeatherWindSpeed())")
-            Spacer()
-        }.safeAreaPadding(.top, 80)
+            windDataView
+        }.safeAreaPadding([.top, .bottom], 80)
+    }
+    
+    private var windDataView: some View {
+        VStack(alignment: .leading) {
+            Text("Wind & Humidty")
+                .font(.system(size: 22))
+                .fontWeight(.bold)
+                .foregroundStyle(.white)
+            ZStack {
+                RoundedRectangle(cornerRadius: 20.0)
+                    .fill(weatherCategory.widgetBackground)
+                HStack(spacing: 32) {
+                    HStack {
+                        Image(systemName: "wind")
+                            .resizable(resizingMode: .stretch)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 52)
+                            .foregroundStyle(weatherCategory.titleColor)
+                            .padding(.leading, 10)
+                        VStack(alignment: .leading) {
+                            Text(viewModel.getWindSpeed())
+                                .font(.system(size: 22))
+                            Text("Current")
+                                .font(.caption)
+                        }.foregroundStyle(.white)
+                    }
+                    HStack {
+                        Image(systemName: "humidity.fill")
+                            .resizable(resizingMode: .stretch)
+                            .aspectRatio(contentMode: .fit)
+                            .frame(width: 52)
+                            .foregroundStyle(weatherCategory.titleColor)
+                        VStack(alignment: .leading) {
+                            Text(viewModel.getMaxHumidity())
+                                .font(.system(size: 28))
+                            Text("Max")                                .font(.caption)
+                        }.foregroundStyle(.white)
+                    }
+                }
+            }
+        }.padding()
     }
     
     private var hourlyTempView: some View {
@@ -107,7 +153,7 @@ struct WeatherView: View {
                     ForEach(viewModel.getHourlyDetails(), id: \.date) { hourlyTemp in
                         ZStack {
                             RoundedRectangle(cornerRadius: 20.0)
-                                .fill(Color.white.opacity(0.2))
+                                .fill(weatherCategory.widgetBackground)
                             VStack(spacing: 10) {
                                 Text(hourlyTemp.temp)
                                     .font(.system(size: 18))

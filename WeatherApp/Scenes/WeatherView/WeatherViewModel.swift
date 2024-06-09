@@ -100,4 +100,18 @@ extension WeatherViewModel {
         }
         return hourlyData
     }
+    
+    func getWindSpeed() -> String {
+        guard let weatherData else { return "" }
+
+        return "\(weatherData.current.windSpeed) \(weatherData.currentUnits.windSpeedUnit)"
+    }
+    
+    func getMaxHumidity() -> String {
+        guard let weatherData,
+              let maxHumidity = weatherData.hourlyData.humidity.max()
+        else { return "" }
+        
+        return "\(maxHumidity)%"
+    }
 }
