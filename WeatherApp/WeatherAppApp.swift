@@ -18,7 +18,7 @@ struct WeatherAppApp: App {
             TabView {
                 WeatherView(viewModel: .init(weatherService: weatherService))
                     .tabItem { Label("Current weather", systemImage: "sun.haze.fill") }
-                ContentView()
+                FavoriteLocationsView(viewModel: .init(weatherService: weatherService))
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
                     .tabItem { Label("Favorite locations", systemImage: "list.bullet.below.rectangle") }
             }

@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  FavoriteLocationsView.swift
 //  WeatherApp
 //
 //  Created by Giovanne Bressam on 06/06/24.
@@ -8,14 +8,23 @@
 import SwiftUI
 import CoreData
 
-struct ContentView: View {
+struct FavoriteLocationsView: View {
+    // MARK: - Properties
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
         sortDescriptors: [NSSortDescriptor(keyPath: \FavoriteLocation.creationDate, ascending: true)],
         animation: .default)
     private var items: FetchedResults<FavoriteLocation>
+    
+    @ObservedObject var viewModel: FavoriteLocationsViewModel
+    
+    // MARK: - Setup
+    init(viewModel: FavoriteLocationsViewModel) {
+        self.viewModel = viewModel
+    }
 
+    // MARK: - View
     var body: some View {
         NavigationView {
             List {
@@ -30,7 +39,7 @@ struct ContentView: View {
                 } else {
                     ForEach(items) { item in
                         NavigationLink {
-                            Text("Item at \(item.creationDate!, formatter: itemFormatter)")
+                            WeatherView(viewModel: viewModel.getWeatherViewModel(for: item))
                         } label: {
                             Text(item.creationDate!, formatter: itemFormatter)
                         }
@@ -92,5 +101,7 @@ private let itemFormatter: DateFormatter = {
 }()
 
 #Preview {
-    ContentView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+    let mockedService = WeatherServiceFactory.shared.createWeatherService(mocked: true)
+    return FavoriteLocationsView(viewModel: .init(weatherService: mockedService))
+        .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }
