@@ -43,7 +43,7 @@ enum WeatherCategory {
     var widgetBackground: Color {
         switch self {
         case .sunny: return Color.white.opacity(0.2)
-        case .dark: return Color.white.opacity(0.16)
+        case .dark: return Color.white.opacity(0.2)
         }
     }
     
@@ -84,10 +84,9 @@ struct WeatherView: View {
                     LinearGradient(gradient: Gradient(colors: weatherCategory.backgroundGradientColors),
                                    startPoint: .top,
                                    endPoint: .bottom)
-                )
+                ).ignoresSafeArea()
             contentView
         }
-        .ignoresSafeArea()
         .onAppear(perform: handleOnAppear)
     }
     
@@ -107,7 +106,7 @@ struct WeatherView: View {
             hourlyTempView
                 .padding(.top, 40)
             windDataView
-        }.safeAreaPadding([.top, .bottom], 80)
+        }.safeAreaPadding(.top, 20)
     }
     
     private var windDataView: some View {
