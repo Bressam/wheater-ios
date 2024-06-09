@@ -9,12 +9,28 @@ import SwiftUI
 
 @main
 struct WeatherAppApp: App {
+    // MARK: - Services
     let persistenceController = PersistenceController.shared
+    let weatherService: WeatherService
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
-                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            TabView {
+                WeatherView(viewModel: .init(weatherService: weatherService))
+                    .tabItem { Label("Current weather", systemImage: "sun.haze.fill") }
+                FavoriteLocationsView(viewModel: .init(weatherService: weatherService))
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                    .tabItem { Label("Favorite locations", systemImage: "list.bullet.below.rectangle") }
+            }
+            .tint(.yellow)
         }
+    }
+    
+    init() {
+        // Services creation
+        weatherService = WeatherServiceFactory.shared.createWeatherService(mocked: false)
+        
+        // Appearance
+        UITabBar.appearance().unselectedItemTintColor = UIColor.white
     }
 }
