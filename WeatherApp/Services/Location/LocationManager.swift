@@ -8,13 +8,14 @@
 import Foundation
 import CoreLocation
 
-protocol LocationManagerDelegate: AnyObject {
-    func didReceiveCurrentLocation(latitude: Double, longitude: Double)
+struct CurrentLocationCoordinate {
+    let latitude: LocationWeather.LocationDegrees
+    let longitude: LocationWeather.LocationDegrees
 }
 
 class LocationManager: NSObject, CLLocationManagerDelegate {
     private var locationManager: CLLocationManager?
-    weak var delegate: LocationManagerDelegate?
+    private var locationContinuation: CheckedContinuation<CurrentLocationCoordinate, Error>?
 
     override init() {
         self.locationManager = .init()
@@ -26,26 +27,32 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
         locationManager?.requestWhenInUseAuthorization()
     }
 
-    func getCurrentLocation() {
-        let status = locationManager?.authorizationStatus
-        if status == .authorizedAlways || status == .authorizedWhenInUse {
-            locationManager?.startUpdatingLocation()
-        } else {
-            requestPermission()
+    func getCurrentLocation() async throws -> CurrentLocationCoordinate? {
+        try await withCheckedThrowingContinuation { continuation in
+            locationContinuation = continuation
+            let status = locationManager?.authorizationStatus
+            if status == .authorizedAlways || status == .authorizedWhenInUse {
+                locationManager?.requestLocation()
+            } else {
+                requestPermission()
+            }
         }
     }
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedAlways || status == .authorizedWhenInUse {
-            print("Auth provided")
-            manager.startUpdatingLocation()
+            manager.requestLocation()
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let coordinate = manager.location?.coordinate else { return }
         print("Lat: \(coordinate.latitude), Long: \(coordinate.longitude)")
-        manager.stopUpdatingLocation()
-        delegate?.didReceiveCurrentLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
+        locationContinuation?.resume(returning: .init(latitude: coordinate.latitude,
+                                                      longitude: coordinate.longitude))
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        locationContinuation?.resume(throwing: error)
     }
 }

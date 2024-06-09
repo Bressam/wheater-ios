@@ -22,7 +22,7 @@ class WeatherViewModel: ObservableObject {
         if let customLocation {
             fetchedWeather = try await weatherService.getWeather(latitude: customLocation.latitude, longitude: customLocation.longitude)
         } else {
-            fetchedWeather = try await weatherService.getWeather(latitude: -25.441105, longitude: -49.276855)
+            fetchedWeather = try await weatherService.getCurrentWeather()
         }
         await MainActor.run {
             weatherData = fetchedWeather
