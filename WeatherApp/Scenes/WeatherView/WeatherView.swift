@@ -128,7 +128,7 @@ struct WeatherView: View {
                             .padding(.leading, 10)
                         VStack(alignment: .leading) {
                             Text(viewModel.getWindSpeed())
-                                .font(.system(size: 22))
+                                .font(.system(size: 24))
                             Text("Current")
                                 .font(.caption)
                         }.foregroundStyle(.white)
@@ -141,7 +141,7 @@ struct WeatherView: View {
                             .foregroundStyle(weatherCategory.iconsColor)
                         VStack(alignment: .leading) {
                             Text(viewModel.getMaxHumidity())
-                                .font(.system(size: 28))
+                                .font(.system(size: 24))
                             Text("Max")                                .font(.caption)
                         }.foregroundStyle(.white)
                     }
