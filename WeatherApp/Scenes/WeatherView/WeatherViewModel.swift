@@ -39,6 +39,11 @@ extension WeatherViewModel {
         numberFormatter.maximumFractionDigits = 2
         return numberFormatter
     }
+    
+    func getCityName() -> String {
+        guard let cityName = weatherData?.cityName else { return "" }
+        return cityName.capitalized
+    }
 
     func getWeatherTemperature() -> String {
         guard let weatherData else { return "" }

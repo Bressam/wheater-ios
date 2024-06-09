@@ -10,10 +10,7 @@ import SwiftUI
 struct WeatherView: View {
     // MARK: - Properties
     @ObservedObject var viewModel: WeatherViewModel
-    private let backgroundColors: [Color] = [
-        .init(red: 0 / 255, green: 212 / 255, blue: 255 / 255),
-        .init(red: 9 / 255, green: 9 / 255, blue: 121 / 255),
-    ]
+    @State private var weatherCategory: WeatherCategory = .sunny
 
     // MARK: - Setup & Lifecycle
     init(viewModel: WeatherViewModel) {
@@ -35,7 +32,7 @@ struct WeatherView: View {
         ZStack {
             Rectangle()
                 .fill(
-                    LinearGradient(gradient: Gradient(colors: backgroundColors),
+                    LinearGradient(gradient: Gradient(colors: weatherCategory.backgroundGradientColors),
                                    startPoint: .top,
                                    endPoint: .bottom)
                 )
@@ -47,22 +44,80 @@ struct WeatherView: View {
     
     @ViewBuilder
     private var contentView: some View {
-        if let weatherData = viewModel.weatherData {
-            VStack {
-                Text("Hello \(weatherData.cityName!)!\nWeather: \(viewModel.getWeatherTemperature())\n\(viewModel.getWeatherWindSpeed())")
-            }
+        if viewModel.weatherData != nil {
+            locationWeatherDetailsView
         } else {
-            VStack {
-                Text("Loading weather :)")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .foregroundStyle(.yellow)
-                ProgressView()
-                    .controlSize(.extraLarge)
-                    .tint(Color.yellow)
+            loadingView
+        }
+    }
+    
+    enum WeatherCategory {
+        case sunny, rainy
+        
+        var titleColor: Color {
+            switch self {
+            case .sunny: return .yellow
+            case .rainy: return .white
             }
         }
-
+        
+        var backgroundGradientColors: [Color] {
+            switch self {
+            case .sunny:
+                return [
+                    .init(red: 0 / 255, green: 212 / 255, blue: 255 / 255),
+                    .init(red: 9 / 255, green: 9 / 255, blue: 121 / 255),
+                ]
+            case .rainy: 
+                return [
+                    .init(red: 0 / 255, green: 212 / 255, blue: 255 / 255),
+                    .init(red: 9 / 255, green: 9 / 255, blue: 121 / 255),
+                ]
+            }
+        }
+        
+        var weatherIconName: String {
+            switch self {
+            case .sunny: return "sun.max.fill"
+            case .rainy: return "cloud.rain.fill"
+            }
+        }
+    }
+    
+    private var locationWeatherDetailsView: some View {
+        VStack(alignment: .leading) {
+            headerView
+            Spacer()
+            Text("Hello \(viewModel.getCityName())!\nWeather: \(viewModel.getWeatherTemperature())\n\(viewModel.getWeatherWindSpeed())")
+            Spacer()
+        }.safeAreaPadding(.top, 80)
+    }
+    
+    private var headerView: some View {
+        HStack {
+            Text("\(viewModel.getCityName())")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+                .foregroundStyle(weatherCategory.titleColor)
+            Image(systemName: weatherCategory.weatherIconName)
+                .resizable(resizingMode: .stretch)
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 26)
+                .foregroundStyle(weatherCategory.titleColor)
+            Spacer()
+        }.padding()
+    }
+    
+    private var loadingView: some View {
+        VStack {
+            Text("Loading weather :)")
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundStyle(.yellow)
+            ProgressView()
+                .controlSize(.extraLarge)
+                .tint(Color.yellow)
+        }
     }
 }
 
