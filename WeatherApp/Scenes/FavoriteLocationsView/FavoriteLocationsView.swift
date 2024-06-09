@@ -65,6 +65,9 @@ struct FavoriteLocationsView: View {
         withAnimation {
             let newItem = FavoriteLocation(context: viewContext)
             newItem.creationDate = Date()
+            newItem.cityName = "Curitiba"
+            newItem.latitude = -25.441105
+            newItem.longitude = -49.276855
 
             do {
                 try viewContext.save()
