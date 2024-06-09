@@ -11,6 +11,7 @@ public enum WheaterError: Error, LocalizedError {
     case somethingWentWrong
 }
 
+/// https://open-meteo.com/
 class RemoteWeatherProvider: WeatherProvider {
     let baseURL: String = "https://api.open-meteo.com/v1"
     
