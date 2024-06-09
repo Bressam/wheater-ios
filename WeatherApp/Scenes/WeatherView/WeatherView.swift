@@ -157,8 +157,8 @@ struct WeatherView: View {
     private var loadingView: some View {
         VStack {
             Text("Loading weather :)")
-                .font(.title)
-                .fontWeight(.bold)
+                .font(.title2)
+                .fontWeight(.medium)
                 .foregroundStyle(.yellow)
             ProgressView()
                 .controlSize(.extraLarge)
