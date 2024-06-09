@@ -87,16 +87,34 @@ struct WeatherView: View {
     private var locationWeatherDetailsView: some View {
         VStack(alignment: .leading) {
             headerView
+            temperatureView
             Spacer()
             Text("Hello \(viewModel.getCityName())!\nWeather: \(viewModel.getWeatherTemperature())\n\(viewModel.getWeatherWindSpeed())")
             Spacer()
         }.safeAreaPadding(.top, 80)
     }
     
+    private var temperatureView: some View {
+        HStack {
+            Spacer()
+            VStack {
+                Text(viewModel.getWeatherTemperature())
+                    .font(.system(size: 60))
+                    .fontWeight(.light)
+                HStack {
+                    Text(viewModel.getMinTemperature())
+                    Text("&")
+                    Text(viewModel.getMaxTemperature())
+                }
+            }.foregroundStyle(.white.opacity(80))
+            Spacer()
+        }
+    }
+    
     private var headerView: some View {
         HStack {
             Text("\(viewModel.getCityName())")
-                .font(.largeTitle)
+                .font(.system(size: 40))
                 .fontWeight(.bold)
                 .foregroundStyle(weatherCategory.titleColor)
             Image(systemName: weatherCategory.weatherIconName)

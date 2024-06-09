@@ -69,4 +69,18 @@ extension WeatherViewModel {
         //                print(data.hourly.temperature2m[i])
         //            }
     }
+    
+    func getMinTemperature() -> String {
+        guard let weatherData = weatherData,
+              let minTemp = weatherData.hourlyData.temperature2m.min() else { return "" }
+        
+        return "min: \(minTemp)\(weatherData.currentUnits.temperatureUnit)"
+    }
+    
+    func getMaxTemperature() -> String {
+        guard let weatherData = weatherData,
+              let maxTemp = weatherData.hourlyData.temperature2m.max() else { return "" }
+        
+        return "max: \(maxTemp)\(weatherData.currentUnits.temperatureUnit)"
+    }
 }
