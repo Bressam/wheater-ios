@@ -50,7 +50,7 @@ struct FavoriteLocationsView: View {
                     NavigationLink {
                         WeatherView(viewModel: viewModel.getWeatherViewModel(for: item))
                     } label: {
-                        Text(item.creationDate!, formatter: itemFormatter)
+                        Text(item.cityName ?? "Unknown Location")
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -72,12 +72,14 @@ struct FavoriteLocationsView: View {
 
     private func addItem() {
         withAnimation {
+        Task {
             let newItem = FavoriteLocation(context: viewContext)
             newItem.creationDate = Date()
-            newItem.cityName = "Curitiba"
-            newItem.latitude = -25.441105
-            newItem.longitude = -49.276855
-
+            let currentLocationData = try await viewModel.getCurrentLocationData()
+            newItem.cityName = currentLocationData.cityName
+            newItem.latitude = currentLocationData.latitude
+            newItem.longitude = currentLocationData.longitude
+            
             do {
                 try viewContext.save()
             } catch {
@@ -86,6 +88,7 @@ struct FavoriteLocationsView: View {
                 let nsError = error as NSError
                 fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
             }
+                    }
         }
     }
 
