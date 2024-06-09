@@ -17,8 +17,8 @@ class WeatherService: WeatherProvider {
     }
 
     // MARK: - Data provider Methods
-    func getWeather(latitude: LocationWeather.LocationDegrees, longitude: LocationWeather.LocationDegrees) -> LocationWeather {
-        return dataProvider.getWeather(latitude: latitude, longitude: longitude)
+    func getWeather(latitude: LocationWeather.LocationDegrees, longitude: LocationWeather.LocationDegrees) async throws -> LocationWeather {
+        return try await dataProvider.getWeather(latitude: latitude, longitude: longitude)
     }
     
     // MARK: - Data handling

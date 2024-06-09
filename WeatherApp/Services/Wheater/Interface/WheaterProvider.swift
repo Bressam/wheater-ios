@@ -9,5 +9,5 @@ import Foundation
 
 protocol WeatherProvider: AnyObject {
     func getWeather(latitude: LocationWeather.LocationDegrees,
-                    longitude: LocationWeather.LocationDegrees) -> LocationWeather
+                    longitude: LocationWeather.LocationDegrees) async throws -> LocationWeather
 }
