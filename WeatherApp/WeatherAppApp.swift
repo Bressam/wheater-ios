@@ -9,12 +9,19 @@ import SwiftUI
 
 @main
 struct WeatherAppApp: App {
+    // MARK: - Services
     let persistenceController = PersistenceController.shared
+    let weatherService: WeatherService
 
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
+    }
+    
+    init() {
+        // Services creation
+        weatherService = WeatherServiceFactory.shared.createWeatherService(mocked: false)
     }
 }
