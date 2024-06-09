@@ -19,8 +19,10 @@ class WeatherService: WeatherProvider {
 
     // MARK: - Data provider Methods
     func getWeather(latitude: LocationWeather.LocationDegrees, longitude: LocationWeather.LocationDegrees) async throws -> LocationWeather {
-        await getCityName(latitude: latitude, longitude: longitude)
-        return try await dataProvider.getWeather(latitude: latitude, longitude: longitude)
+        let cityName = await getCityName(latitude: latitude, longitude: longitude)
+        var locationWeather = try await dataProvider.getWeather(latitude: latitude, longitude: longitude)
+        locationWeather.cityName = cityName
+        return locationWeather
     }
     
     // MARK: - Data handling
@@ -45,7 +47,6 @@ class WeatherService: WeatherProvider {
             return "Unknown city"
         }
         let cityName = possibleLocations[0].locality ?? "Unknown city"
-        print(cityName)
         return cityName
     }
     

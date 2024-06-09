@@ -20,7 +20,7 @@ struct WeatherView: View {
     }
     
     private var contentView: some View {
-        Text("Hello! Weather: \(viewModel.weatherData?.current.temperature ?? 0)")
+        Text("Hello \(viewModel.weatherData?.cityName ?? "")!\nWeather: \(viewModel.weatherData?.current.temperature ?? 0)")
     }
     
     private func handleOnAppear() {
