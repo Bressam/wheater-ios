@@ -13,6 +13,11 @@ struct CurrentLocationCoordinate {
     let longitude: LocationWeather.LocationDegrees
 }
 
+enum LocationError: Error, LocalizedError {
+    case missingPermission
+}
+
+
 class LocationManager: NSObject, CLLocationManagerDelegate {
     private var locationManager: CLLocationManager?
     private var locationContinuation: CheckedContinuation<CurrentLocationCoordinate, Error>?
@@ -42,6 +47,8 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .authorizedAlways || status == .authorizedWhenInUse {
             manager.requestLocation()
+        } else {
+            locationContinuation?.resume(throwing: LocationError.missingPermission)
         }
     }
     
