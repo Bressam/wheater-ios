@@ -28,7 +28,7 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     }
 
     func getCurrentLocation() async throws -> CurrentLocationCoordinate? {
-        try await withCheckedThrowingContinuation { continuation in
+        return try await withCheckedThrowingContinuation { continuation in
             locationContinuation = continuation
             let status = locationManager?.authorizationStatus
             if status == .authorizedAlways || status == .authorizedWhenInUse {
