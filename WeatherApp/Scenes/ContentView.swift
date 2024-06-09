@@ -12,9 +12,9 @@ struct ContentView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \Item.timestamp, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \FavoriteLocation.creationDate, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<Item>
+    private var items: FetchedResults<FavoriteLocation>
 
     var body: some View {
         NavigationView {
@@ -30,9 +30,9 @@ struct ContentView: View {
                 } else {
                     ForEach(items) { item in
                         NavigationLink {
-                            Text("Item at \(item.timestamp!, formatter: itemFormatter)")
+                            Text("Item at \(item.creationDate!, formatter: itemFormatter)")
                         } label: {
-                            Text(item.timestamp!, formatter: itemFormatter)
+                            Text(item.creationDate!, formatter: itemFormatter)
                         }
                     }
                     .onDelete(perform: deleteItems)
@@ -54,8 +54,8 @@ struct ContentView: View {
 
     private func addItem() {
         withAnimation {
-            let newItem = Item(context: viewContext)
-            newItem.timestamp = Date()
+            let newItem = FavoriteLocation(context: viewContext)
+            newItem.creationDate = Date()
 
             do {
                 try viewContext.save()
