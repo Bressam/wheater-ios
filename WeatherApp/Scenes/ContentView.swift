@@ -19,7 +19,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                if !items.isEmpty {
+                if items.isEmpty {
                     ContentUnavailableView {
                         Label("No favorite locations yet!",
                               systemImage: "list.bullet.below.rectangle")

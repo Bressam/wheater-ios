@@ -15,9 +15,13 @@ struct WeatherAppApp: App {
 
     var body: some Scene {
         WindowGroup {
-            WeatherView(viewModel: .init(weatherService: weatherService))
-//            ContentView()
-//                .environment(\.managedObjectContext, persistenceController.container.viewContext)
+            TabView {
+                WeatherView(viewModel: .init(weatherService: weatherService))
+                    .tabItem { Label("Current weather", systemImage: "sun.haze.fill") }
+                ContentView()
+                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                    .tabItem { Label("Favorite locations", systemImage: "list.bullet.below.rectangle") }
+            }
         }
     }
     
