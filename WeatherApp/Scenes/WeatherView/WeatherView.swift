@@ -7,6 +7,54 @@
 
 import SwiftUI
 
+
+enum WeatherCategory {
+    case sunny, rainy
+    
+    var titleColor: Color {
+        switch self {
+        case .sunny: return .yellow
+        case .rainy: return .white
+        }
+    }
+    
+    var backgroundGradientColors: [Color] {
+        switch self {
+        case .sunny:
+            return [
+                .init(red: 0 / 255, green: 212 / 255, blue: 255 / 255),
+                .init(red: 9 / 255, green: 9 / 255, blue: 121 / 255),
+            ]
+        case .rainy:
+            return [
+                .init(red: 2 / 255, green: 0 / 255, blue: 36 / 255),
+                .init(red: 9 / 255, green: 9 / 255, blue: 121 / 255)
+            ]
+        }
+    }
+    
+    var weatherIconName: String {
+        switch self {
+        case .sunny: return "sun.max.fill"
+        case .rainy: return "cloud.rain.fill"
+        }
+    }
+    
+    var widgetBackground: Color {
+        switch self {
+        case .sunny: return Color.white.opacity(0.2)
+        case .rainy: return Color.white.opacity(0.16)
+        }
+    }
+    
+    var iconsColor: Color {
+        switch self {
+        case .sunny: return .yellow
+        case .rainy: return .init(red: 2 / 255, green: 0 / 255, blue: 60 / 255)
+        }
+    }
+}
+
 struct WeatherView: View {
     // MARK: - Properties
     @ObservedObject var viewModel: WeatherViewModel
@@ -21,6 +69,7 @@ struct WeatherView: View {
         Task{
             do{
                 try await viewModel.fetchWeather()
+                weatherCategory = viewModel.weatherCategory
             } catch{
                 print(error)
             }
@@ -50,47 +99,7 @@ struct WeatherView: View {
             loadingView
         }
     }
-    
-    enum WeatherCategory {
-        case sunny, rainy
-        
-        var titleColor: Color {
-            switch self {
-            case .sunny: return .yellow
-            case .rainy: return .white
-            }
-        }
-        
-        var backgroundGradientColors: [Color] {
-            switch self {
-            case .sunny:
-                return [
-                    .init(red: 0 / 255, green: 212 / 255, blue: 255 / 255),
-                    .init(red: 9 / 255, green: 9 / 255, blue: 121 / 255),
-                ]
-            case .rainy: 
-                return [
-                    .init(red: 0 / 255, green: 212 / 255, blue: 255 / 255),
-                    .init(red: 9 / 255, green: 9 / 255, blue: 121 / 255),
-                ]
-            }
-        }
-        
-        var weatherIconName: String {
-            switch self {
-            case .sunny: return "sun.max.fill"
-            case .rainy: return "cloud.rain.fill"
-            }
-        }
-        
-        var widgetBackground: Color {
-            switch self {
-            case .sunny: return Color.white.opacity(0.2)
-            case .rainy: return Color(red: 9 / 255, green: 9 / 255, blue: 121 / 255).opacity(0.2)
-            }
-        }
-    }
-    
+
     private var locationWeatherDetailsView: some View {
         VStack(alignment: .leading) {
             headerView
@@ -116,7 +125,7 @@ struct WeatherView: View {
                             .resizable(resizingMode: .stretch)
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 52)
-                            .foregroundStyle(weatherCategory.titleColor)
+                            .foregroundStyle(weatherCategory.iconsColor)
                             .padding(.leading, 10)
                         VStack(alignment: .leading) {
                             Text(viewModel.getWindSpeed())
@@ -130,7 +139,7 @@ struct WeatherView: View {
                             .resizable(resizingMode: .stretch)
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 52)
-                            .foregroundStyle(weatherCategory.titleColor)
+                            .foregroundStyle(weatherCategory.iconsColor)
                         VStack(alignment: .leading) {
                             Text(viewModel.getMaxHumidity())
                                 .font(.system(size: 28))
@@ -150,7 +159,7 @@ struct WeatherView: View {
                 .foregroundStyle(.white)
             ScrollView(.horizontal) {
                 HStack {
-                    ForEach(viewModel.getHourlyDetails(), id: \.date) { hourlyTemp in
+                    ForEach(viewModel.getHourlyDetails(), id: \.id) { hourlyTemp in
                         ZStack {
                             RoundedRectangle(cornerRadius: 20.0)
                                 .fill(weatherCategory.widgetBackground)

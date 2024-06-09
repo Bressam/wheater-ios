@@ -11,6 +11,7 @@ class WeatherViewModel: ObservableObject {
     let weatherService: WeatherService
     let customLocation: FavoriteLocation?
     @Published var weatherData: LocationWeather?
+    @Published var weatherCategory: WeatherCategory = .sunny
     
     init(weatherService: WeatherService, customLocation: FavoriteLocation? = nil) {
         self.weatherService = weatherService
@@ -26,9 +27,17 @@ class WeatherViewModel: ObservableObject {
         }
         await MainActor.run {
             weatherData = fetchedWeather
+            weatherCategory = getWeatherCategory()
         }
     }
 
+    func getWeatherCategory() -> WeatherCategory {
+        let date = Date()
+        let calendar = Calendar.current
+        let hour = calendar.component(.hour, from: date)
+        
+        return hour > 18 ? .rainy : .sunny
+    }
 }
 
 // MARK: - Data Formatting
@@ -60,14 +69,6 @@ extension WeatherViewModel {
     func getCurrentDate() -> String {
         guard let weatherData else { return "" }
         return weatherData.current.time
-        //        let dateFormatter = DateFormatter()
-        //            dateFormatter.timeZone = .gmt
-        //            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-        //        return dateFormatter.string(from: weatherData.current.time)
-        //            for (i, date) in data.hourly.time.enumerated() {
-        //                print(dateFormatter.string(from: date))
-        //                print(data.hourly.temperature2m[i])
-        //            }
     }
     
     func getMinTemperature() -> String {
@@ -85,6 +86,7 @@ extension WeatherViewModel {
     }
     
     struct HourlyData {
+        let id = UUID()
         let date: String
         let temp: String
     }
