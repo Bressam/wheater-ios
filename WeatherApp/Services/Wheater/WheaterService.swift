@@ -39,23 +39,12 @@ class WeatherService: WeatherProvider {
     func getCityName(latitude: LocationWeather.LocationDegrees,
                      longitude: LocationWeather.LocationDegrees) async -> String {
         let geocoder = CLGeocoder()
-        
-//        geocoder.reverseGeocodeLocation(.init(latitude: latitude, longitude: longitude)) { [weak self] (placemarks, error) in
-//            if error == nil {
-//                if let firstLocation = placemarks?[0],
-//                   let cityName = firstLocation.locality { // get the city name
-//                    print(cityName)
-//                }
-//            }
-//        }
-        
         guard let possibleLocations = try? await geocoder.reverseGeocodeLocation(.init(latitude: latitude, longitude: longitude),
                                                                                  preferredLocale: .current)
         else {
             return "Unknown city"
         }
-        let firstLocation = possibleLocations[0]
-        let cityName = firstLocation.locality ?? "Unknown city"
+        let cityName = possibleLocations[0].locality ?? "Unknown city"
         print(cityName)
         return cityName
     }
