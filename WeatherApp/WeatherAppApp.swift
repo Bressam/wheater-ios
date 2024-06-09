@@ -22,11 +22,15 @@ struct WeatherAppApp: App {
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
                     .tabItem { Label("Favorite locations", systemImage: "list.bullet.below.rectangle") }
             }
+            .tint(.yellow)
         }
     }
     
     init() {
         // Services creation
         weatherService = WeatherServiceFactory.shared.createWeatherService(mocked: false)
+        
+        // Appearance
+        UITabBar.appearance().unselectedItemTintColor = UIColor.white
     }
 }

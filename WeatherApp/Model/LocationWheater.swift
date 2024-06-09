@@ -15,10 +15,12 @@ struct LocationWeather: Codable {
     let longitude: LocationDegrees?
     var cityName: String? = nil
     let current: CurrentWeather
+    let currentUnits: CurrentWeatherUnits
     let hourlyData: HourlyWeatherData
     
     enum CodingKeys: String, CodingKey {
         case hourlyData = "hourly"
+        case currentUnits = "current_units"
         case latitude, longitude, cityName, current
     }
 }
@@ -33,6 +35,20 @@ struct CurrentWeather: Codable {
         case time, interval
         case temperature = "temperature_2m"
         case windSpeed = "wind_speed_10m"
+    }
+}
+
+struct CurrentWeatherUnits: Codable {
+    let timeUnit: String
+    let intervalUnit: String
+    let temperatureUnit: String
+    let windSpeedUnit: String
+    
+    enum CodingKeys: String, CodingKey {
+        case timeUnit = "time"
+        case intervalUnit = "interval"
+        case temperatureUnit = "temperature_2m"
+        case windSpeedUnit = "wind_speed_10m"
     }
 }
 

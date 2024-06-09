@@ -16,6 +16,10 @@ class WeatherProviderMock: WeatherProvider {
                                     interval: 900,
                                     temperature: 11.3,
                                     windSpeed: 20),
+                     currentUnits: .init(timeUnit: "iso8601",
+                                         intervalUnit: "seconds",
+                                         temperatureUnit: "°C",
+                                         windSpeedUnit: "km/h"),
                      hourlyData: .init(time: [
                         "2024-06-09T04:30",
                         "2024-06-09T05:30"

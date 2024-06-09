@@ -34,18 +34,6 @@ class WeatherService: WeatherProvider {
         locationWeather.cityName = cityName
         return locationWeather
     }
-    
-    // MARK: - Data handling
-    
-    // Formatter
-//    let dateFormatter = DateFormatter()
-//    dateFormatter.timeZone = .gmt
-//    dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
-//    for (i, date) in data.hourly.time.enumerated() {
-//        print(dateFormatter.string(from: date))
-//        print(data.hourly.temperature2m[i])
-//    }
-
 
     // City name
     func getCityName(latitude: LocationWeather.LocationDegrees,
