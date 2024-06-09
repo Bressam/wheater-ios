@@ -100,9 +100,9 @@
 			isa = PBXGroup;
 			children = (
 				1855BB252C155C97005E2C5A /* RemoteWheaterProvider.swift */,
+				1855BB272C155D3E005E2C5A /* WheaterProviderMock.swift */,
 				1855BB1A2C15544C005E2C5A /* WheaterService.swift */,
 				1855BB1E2C155466005E2C5A /* Interface */,
-				1855BB272C155D3E005E2C5A /* WheaterProviderMock.swift */,
 			);
 			path = Wheater;
 			sourceTree = "<group>";

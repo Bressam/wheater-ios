@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 class WeatherService: WeatherProvider {
     // MARK: - Properties
@@ -18,6 +19,7 @@ class WeatherService: WeatherProvider {
 
     // MARK: - Data provider Methods
     func getWeather(latitude: LocationWeather.LocationDegrees, longitude: LocationWeather.LocationDegrees) async throws -> LocationWeather {
+        await getCityName(latitude: latitude, longitude: longitude)
         return try await dataProvider.getWeather(latitude: latitude, longitude: longitude)
     }
     
@@ -34,18 +36,28 @@ class WeatherService: WeatherProvider {
 
 
     // City name
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-//        if let lastLocation = locations.last {
-//            let geocoder = CLGeocoder()
-//            
-//            geocoder.reverseGeocodeLocation(lastLocation) { [weak self] (placemarks, error) in
-//                if error == nil {
-//                    if let firstLocation = placemarks?[0],
-//                       let cityName = firstLocation.locality { // get the city name
-//                        self?.locationManager.stopUpdatingLocation()
-//                    }
+    func getCityName(latitude: LocationWeather.LocationDegrees,
+                     longitude: LocationWeather.LocationDegrees) async -> String {
+        let geocoder = CLGeocoder()
+        
+//        geocoder.reverseGeocodeLocation(.init(latitude: latitude, longitude: longitude)) { [weak self] (placemarks, error) in
+//            if error == nil {
+//                if let firstLocation = placemarks?[0],
+//                   let cityName = firstLocation.locality { // get the city name
+//                    print(cityName)
 //                }
 //            }
 //        }
-//    }
+        
+        guard let possibleLocations = try? await geocoder.reverseGeocodeLocation(.init(latitude: latitude, longitude: longitude),
+                                                                                 preferredLocale: .current)
+        else {
+            return "Unknown city"
+        }
+        let firstLocation = possibleLocations[0]
+        let cityName = firstLocation.locality ?? "Unknown city"
+        print(cityName)
+        return cityName
+    }
+    
 }
