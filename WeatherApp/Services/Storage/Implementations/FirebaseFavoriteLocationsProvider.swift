@@ -8,6 +8,14 @@
 import Foundation
 
 class FirebaseFavoriteLocationsProvider: FavoriteLocationsProvider {
+    func addItem(_ favoriteLocationData: LocationCoordinate) {
+        //
+    }
+
+    func removeItem(_ favoriteLocation: FavoriteLocation) {
+        //
+    }
+    
     func getFavoriteLocations() async -> [FavoriteLocation] {
         []
     }

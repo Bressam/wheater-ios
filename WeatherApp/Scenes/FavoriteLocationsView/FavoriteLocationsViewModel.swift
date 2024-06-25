@@ -27,8 +27,24 @@ class FavoriteLocationsViewModel: ObservableObject {
         return try await weatherService.getCurrentLocation()
     }
     
+    // Data Provider Management
     func fetchFavoriteLocations() async {
         let favoriteLocationsList = await favoriteLocationsProvider.getFavoriteLocations()
-        favoriteLocations = favoriteLocationsList
+        await MainActor.run {
+            favoriteLocations = favoriteLocationsList
+        }
+    }
+    
+    func addItem() async {
+        guard let locationCoordinateData = try? await getCurrentLocationData() else {
+            print("Failed to get currentLocationData. Cancelling create location task")
+            return
+        }
+        await favoriteLocationsProvider.addItem(locationCoordinateData)
+    }
+    
+    func delete(atIndex: IndexSet) async {
+        let item: FavoriteLocation = favoriteLocations[atIndex.first!]
+        await favoriteLocationsProvider.removeItem(item)
     }
 }

@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import CoreData
 
 enum FavoriteLocationProviderType {
-    case mocked, local, remote
+    case mocked, local(objectContext: NSManagedObjectContext), remote
 }
 
 class FavoriteLocationProviderFactory {
@@ -24,8 +25,8 @@ class FavoriteLocationProviderFactory {
         switch type {
         case .mocked:
             dataProvider = MockedFavoriteLocationProvider()
-        case .local:
-            dataProvider = CoreDataFavoriteLocationsProvider()
+        case .local(let objectContext):
+            dataProvider = CoreDataFavoriteLocationsProvider(objectContext: objectContext)
         case .remote:
             dataProvider = FirebaseFavoriteLocationsProvider()
         }

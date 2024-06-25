@@ -10,13 +10,6 @@ import CoreData
 
 struct FavoriteLocationsView: View {
     // MARK: - Properties
-    @Environment(\.managedObjectContext) private var viewContext
-
-    @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \FavoriteLocationCoreData.creationDate, ascending: true)],
-        animation: .default)
-    private var items: FetchedResults<FavoriteLocationCoreData>
-    
     @ObservedObject var viewModel: FavoriteLocationsViewModel
     
     // MARK: - Setup
@@ -54,7 +47,7 @@ struct FavoriteLocationsView: View {
                     NavigationLink {
                         WeatherView(viewModel: viewModel.getWeatherViewModel(for: item))
                     } label: {
-                        Text(item.cityName ?? "Unknown Location")
+                        Text(item.cityName.isEmpty ? "Unknown Location" : item.cityName )
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -75,39 +68,15 @@ struct FavoriteLocationsView: View {
     }
 
     private func addItem() {
-        withAnimation {
         Task {
-            let newItem = FavoriteLocationCoreData(context: viewContext)
-            newItem.creationDate = Date()
-            let currentLocationData = try await viewModel.getCurrentLocationData()
-            newItem.cityName = currentLocationData.cityName
-            newItem.latitude = currentLocationData.latitude
-            newItem.longitude = currentLocationData.longitude
-            
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
-                    }
-        }
+            await viewModel.addItem()
+            await viewModel.fetchFavoriteLocations()
+           }
     }
 
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { items[$0] }.forEach(viewContext.delete)
-
-            do {
-                try viewContext.save()
-            } catch {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                let nsError = error as NSError
-                fatalError("Unresolved error \(nsError), \(nsError.userInfo)")
-            }
+    private func deleteItems(index: IndexSet) {
+        Task {
+            await viewModel.delete(atIndex: index)
         }
     }
 }
