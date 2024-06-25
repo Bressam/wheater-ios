@@ -64,12 +64,6 @@ struct SignUpView: View {
         .alert(isPresented: $showingAlert) {
             createAlert()
         }
-        .onAppear(perform: {
-            Task {
-                await viewModel.testFB()
-            }
-        })
-        
     }
     
     private func createAlert() -> Alert {

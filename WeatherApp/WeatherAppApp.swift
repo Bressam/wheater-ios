@@ -34,7 +34,7 @@ struct WeatherAppApp: App {
                     WeatherView(viewModel: .init(weatherService: weatherService))
                         .tabItem { Label("Current weather", systemImage: "sun.haze.fill") }
                     FavoriteLocationsView(viewModel: .init(weatherService: weatherService,
-                                                           favoriteLocationsProvider: FavoriteLocationProviderFactory.shared.createProvider(type: .local(objectContext: persistenceController.containerContext))
+                                                           favoriteLocationsProvider: FavoriteLocationProviderFactory.shared.createProvider(type: getDBProviderType())
                                                           ))
                         .environment(\.managedObjectContext, persistenceController.container.viewContext)
                         .tabItem { Label("Favorite locations", systemImage: "list.bullet.below.rectangle") }
@@ -54,5 +54,10 @@ struct WeatherAppApp: App {
         
         // Appearance
         UITabBar.appearance().unselectedItemTintColor = UIColor.white
+    }
+    
+    private func getDBProviderType() -> FavoriteLocationProviderType {
+//        return .local(objectContext: persistenceController.containerContext)
+        return .remote
     }
 }

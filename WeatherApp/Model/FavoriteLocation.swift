@@ -24,3 +24,12 @@ extension FavoriteLocation {
         self.longitude = coreDataEntity.longitude
     }
 }
+
+extension FavoriteLocation {
+    init(from firestormEntity: LocationCoordinateFireStorm) {
+        self.cityName = firestormEntity.cityName
+        self.creationDate = Date(timeIntervalSince1970: firestormEntity.creationDate)
+        self.latitude = firestormEntity.latitude
+        self.longitude = firestormEntity.longitude
+    }
+}
