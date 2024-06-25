@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct BottomSheet<Content> : View where Content : View {
-    @State var title: String
+    var signIntitle: String
+    var signUptitle: String
+    var isSignUpView: Bool
     var content: (() -> Content)
     
     var body: some View {
@@ -16,7 +18,7 @@ struct BottomSheet<Content> : View where Content : View {
             RoundedRectangle(cornerRadius: 20)
                 .fill(.white)
             VStack(alignment: .leading, spacing: SpacingConstants.xmedium.constant) {
-                Text(title)
+                Text(isSignUpView ? signUptitle : signIntitle)
                     .font(.title)
                     .fontWeight(.medium)
                 content()
@@ -31,7 +33,7 @@ struct BottomSheet<Content> : View where Content : View {
 #Preview(traits: .sizeThatFitsLayout) {
     ZStack {
         Color.blue
-        BottomSheet(title: "Sheet Title", content: {
+        BottomSheet(signIntitle: "Sheet Title", signUptitle: "Sheet Title 2", isSignUpView: false, content: {
             Text("Content data")
         })
         .padding(.top, 300)

@@ -18,7 +18,7 @@ struct HeaderView: View {
             Image(systemName: "sun.haze.fill")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(height: 100)
+                .frame(height: 160)
                 .padding(.top, 50)
                 .foregroundStyle(Color.yellow)
         }

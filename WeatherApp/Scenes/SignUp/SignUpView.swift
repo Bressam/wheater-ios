@@ -8,11 +8,26 @@
 import SwiftUI
 import AuthenticationServices
 
+typealias DidSignInCompletion = () -> Void
 struct SignUpView: View {
     private var email: String = ""
     private var password: String = ""
     @State private var showingAlert = false
     @State private var storePassword: Bool = true
+    @State private var isSignUpView = true
+    var didSignIn: DidSignInCompletion? = nil
+    
+    init(email: String = "",
+         password: String = "",
+         showingAlert: Bool = false,
+         storePassword: Bool = true,
+         didSignIn: DidSignInCompletion? = nil) {
+        self.email = email
+        self.password = password
+        self.showingAlert = showingAlert
+        self.storePassword = storePassword
+        self.didSignIn = didSignIn
+    }
     
     var body: some View {
         VStack(spacing: -30) {
@@ -21,7 +36,9 @@ struct SignUpView: View {
                 .init(red: 69 / 255, green: 23 / 255, blue: 181 / 255)
             ]).frame(height: 350)
             ZStack {
-                BottomSheet(title: "Crie sua conta" ) {
+                BottomSheet(signIntitle: "Crie sua conta",
+                            signUptitle: "Login",
+                            isSignUpView: isSignUpView) {
                     VStack(alignment: .leading,
                            spacing: SpacingConstants.large.constant) {
                         PrimaryTextField(fieldTitle: "E-mail",
@@ -49,20 +66,31 @@ struct SignUpView: View {
     private var siginInTipView: some View {
         HStack(alignment: .center) {
             Spacer()
-            Text("Já possui uma conta?")
+            Text(isSignUpView ? "Já possui uma conta?" : "Não possui uma conta?")
                 .foregroundStyle(.gray)
                 .fontWeight(.medium)
                 .opacity(0.6)
-            Button("Entre", action: { showingAlert = true })
+            Button(isSignUpView ? "Entre" : "Criar", action: {
+                isSignUpView.toggle()
+            })
             Spacer()
         }
     }
     
+    private func topButton(title: String) -> some View {
+        return PrimaryButton(buttonTitle: title,
+                      buttonAction: {
+            didSignIn?()
+        })
+    }
+    
     private var buttonsStack: some View {
         VStackLayout(spacing: SpacingConstants.medium.constant) {
-            PrimaryButton(buttonTitle: "Criar conta",
-                          buttonAction: { showingAlert = true })
-            .frame(height: ButtonSizeConstants.large.constant)
+            if isSignUpView {
+                topButton(title: "Criar conta").frame(height: ButtonSizeConstants.large.constant)
+            } else {
+                topButton(title: "Entrar").frame(height: ButtonSizeConstants.large.constant)
+            }
             
             SignInWithAppleButton(
                 onRequest: { request in
@@ -72,6 +100,7 @@ struct SignUpView: View {
                     //
                 }
             ).frame(height: ButtonSizeConstants.appleSignIn.constant)
+                .opacity(isSignUpView ? 1 : 0)
             siginInTipView
         }
     }
