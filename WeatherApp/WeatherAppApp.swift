@@ -21,6 +21,8 @@ struct WeatherAppApp: App {
                 FavoriteLocationsView(viewModel: .init(weatherService: weatherService))
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
                     .tabItem { Label("Favorite locations", systemImage: "list.bullet.below.rectangle") }
+                SignUpView()
+                    .tabItem { Label("Signup", systemImage: "person.circle") }
             }
             .tint(.yellow)
         }

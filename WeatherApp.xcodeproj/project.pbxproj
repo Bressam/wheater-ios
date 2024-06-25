@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		182B15692C2A4D7500AF3EB2 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B15682C2A4D7500AF3EB2 /* SignUpView.swift */; };
+		182B156C2C2A4D8E00AF3EB2 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B156B2C2A4D8E00AF3EB2 /* BottomSheetView.swift */; };
+		182B156E2C2A4D9900AF3EB2 /* GradientHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B156D2C2A4D9900AF3EB2 /* GradientHeaderView.swift */; };
+		182B15702C2A4DA400AF3EB2 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B156F2C2A4DA400AF3EB2 /* PrimaryButton.swift */; };
+		182B15722C2A4DAF00AF3EB2 /* PrimaryTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B15712C2A4DAF00AF3EB2 /* PrimaryTextField.swift */; };
+		182B15752C2A4DC600AF3EB2 /* LayoutConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B15742C2A4DC600AF3EB2 /* LayoutConstants.swift */; };
 		1855BB1B2C15544C005E2C5A /* WheaterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855BB1A2C15544C005E2C5A /* WheaterService.swift */; };
 		1855BB1D2C15545E005E2C5A /* WheaterProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855BB1C2C15545E005E2C5A /* WheaterProvider.swift */; };
 		1855BB222C15563D005E2C5A /* WheaterServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855BB212C15563D005E2C5A /* WheaterServiceFactory.swift */; };
@@ -26,6 +32,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		182B15682C2A4D7500AF3EB2 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		182B156B2C2A4D8E00AF3EB2 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
+		182B156D2C2A4D9900AF3EB2 /* GradientHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientHeaderView.swift; sourceTree = "<group>"; };
+		182B156F2C2A4DA400AF3EB2 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		182B15712C2A4DAF00AF3EB2 /* PrimaryTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryTextField.swift; sourceTree = "<group>"; };
+		182B15742C2A4DC600AF3EB2 /* LayoutConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutConstants.swift; sourceTree = "<group>"; };
 		1855BB1A2C15544C005E2C5A /* WheaterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheaterService.swift; sourceTree = "<group>"; };
 		1855BB1C2C15545E005E2C5A /* WheaterProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheaterProvider.swift; sourceTree = "<group>"; };
 		1855BB212C15563D005E2C5A /* WheaterServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheaterServiceFactory.swift; sourceTree = "<group>"; };
@@ -56,9 +68,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		182B15672C2A4D3F00AF3EB2 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				182B15682C2A4D7500AF3EB2 /* SignUpView.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		182B156A2C2A4D7F00AF3EB2 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				182B156B2C2A4D8E00AF3EB2 /* BottomSheetView.swift */,
+				182B156D2C2A4D9900AF3EB2 /* GradientHeaderView.swift */,
+				182B156F2C2A4DA400AF3EB2 /* PrimaryButton.swift */,
+				182B15712C2A4DAF00AF3EB2 /* PrimaryTextField.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		182B15732C2A4DBB00AF3EB2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				182B15742C2A4DC600AF3EB2 /* LayoutConstants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		1855BB162C1553C8005E2C5A /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				182B15672C2A4D3F00AF3EB2 /* SignUp */,
 				187E777D2C157236000BF9E4 /* FavoriteLocationsView */,
 				1855BB292C156A29005E2C5A /* WeatherView */,
 			);
@@ -165,12 +205,14 @@
 			children = (
 				18F0305D2C127913003A7943 /* WeatherAppApp.swift */,
 				18F030612C127915003A7943 /* Assets.xcassets */,
+				182B156A2C2A4D7F00AF3EB2 /* Components */,
 				1855BB182C1553D6005E2C5A /* Database */,
 				1855BB202C155615005E2C5A /* Factories */,
 				1855BB172C1553D1005E2C5A /* Model */,
 				18F030632C127915003A7943 /* Preview Content */,
 				1855BB162C1553C8005E2C5A /* Scenes */,
 				1855BB192C1553EA005E2C5A /* Services */,
+				182B15732C2A4DBB00AF3EB2 /* Utils */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -253,20 +295,26 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				182B15702C2A4DA400AF3EB2 /* PrimaryButton.swift in Sources */,
 				1855BB2B2C156A3D005E2C5A /* WeatherView.swift in Sources */,
+				182B15692C2A4D7500AF3EB2 /* SignUpView.swift in Sources */,
 				1855BB2D2C156A47005E2C5A /* WeatherViewModel.swift in Sources */,
+				182B15722C2A4DAF00AF3EB2 /* PrimaryTextField.swift in Sources */,
 				18F0306A2C127915003A7943 /* WeatherApp.xcdatamodeld in Sources */,
 				1855BB242C1556CF005E2C5A /* LocationWheater.swift in Sources */,
 				1855BB262C155C97005E2C5A /* RemoteWheaterProvider.swift in Sources */,
 				1855BB282C155D3E005E2C5A /* WheaterProviderMock.swift in Sources */,
 				1855BB1D2C15545E005E2C5A /* WheaterProvider.swift in Sources */,
 				187E777F2C15723F000BF9E4 /* FavoriteLocationsViewModel.swift in Sources */,
+				182B156C2C2A4D8E00AF3EB2 /* BottomSheetView.swift in Sources */,
 				1855BB222C15563D005E2C5A /* WheaterServiceFactory.swift in Sources */,
 				18F030672C127915003A7943 /* Persistence.swift in Sources */,
 				187E77822C15782C000BF9E4 /* LocationManager.swift in Sources */,
 				1855BB1B2C15544C005E2C5A /* WheaterService.swift in Sources */,
+				182B156E2C2A4D9900AF3EB2 /* GradientHeaderView.swift in Sources */,
 				18F030602C127913003A7943 /* FavoriteLocationsView.swift in Sources */,
 				18F0305E2C127913003A7943 /* WeatherAppApp.swift in Sources */,
+				182B15752C2A4DC600AF3EB2 /* LayoutConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
