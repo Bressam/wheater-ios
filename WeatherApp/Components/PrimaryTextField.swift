@@ -34,7 +34,7 @@ enum TextFieldStyle {
 
 struct PrimaryTextField: View {
     @State var fieldTitle: String
-    @State var inputText: String
+    @Binding var inputText: String
     @State var isSecured: Bool = false
     @State var style: TextFieldStyle = .regular
     var buttonAction: (() -> Void)? = nil
@@ -112,15 +112,15 @@ struct PrimaryTextField: View {
         }
     }
 }
-
-#Preview(traits: .sizeThatFitsLayout) {
-    PrimaryTextField(fieldTitle: "Field title", inputText: "")
-        .padding(24)
-}
-
-#Preview(traits: .sizeThatFitsLayout) {
-    PrimaryTextField(fieldTitle: "Field title", inputText: "",
-                     isSecured: true,
-                     style: .password)
-    .padding(24)
-}
+//
+//#Preview(traits: .sizeThatFitsLayout) {
+//    PrimaryTextField(fieldTitle: "Field title", inputText: $"")
+//        .padding(24)
+//}
+//
+//#Preview(traits: .sizeThatFitsLayout) {
+//    PrimaryTextField(fieldTitle: "Field title", inputText: $"",
+//                     isSecured: true,
+//                     style: .password)
+//    .padding(24)
+//}
