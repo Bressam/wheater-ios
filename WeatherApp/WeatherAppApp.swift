@@ -39,7 +39,7 @@ struct WeatherAppApp: App {
                 }
                 .tint(.yellow)
             } else {
-                SignUpView {
+                SignUpView(viewModel: .init()) {
                     isSignedIn.toggle()
                 }
             }

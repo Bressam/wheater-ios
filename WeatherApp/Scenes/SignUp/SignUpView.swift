@@ -10,6 +10,7 @@ import AuthenticationServices
 
 typealias DidSignInCompletion = () -> Void
 struct SignUpView: View {
+    var viewModel: SignUpViewModel
     private var email: String = ""
     private var password: String = ""
     @State private var showingAlert = false
@@ -17,11 +18,13 @@ struct SignUpView: View {
     @State private var isSignUpView = true
     var didSignIn: DidSignInCompletion? = nil
     
-    init(email: String = "",
+    init(viewModel: SignUpViewModel,
+         email: String = "",
          password: String = "",
          showingAlert: Bool = false,
          storePassword: Bool = true,
          didSignIn: DidSignInCompletion? = nil) {
+        self.viewModel = viewModel
         self.email = email
         self.password = password
         self.showingAlert = showingAlert
@@ -55,11 +58,16 @@ struct SignUpView: View {
                 }
             }
         }.ignoresSafeArea()
-            .alert(isPresented: $showingAlert) {
-                Alert(title: Text("Oups!"),
-                      message: Text("Not implemented yet :("),
-                      dismissButton: .cancel())
+        .alert(isPresented: $showingAlert) {
+            Alert(title: Text("Oups!"),
+                  message: Text("Not implemented yet :("),
+                  dismissButton: .cancel())
+        }
+        .onAppear(perform: {
+            Task {
+                await viewModel.testFB()
             }
+        })
         
     }
     
@@ -107,5 +115,5 @@ struct SignUpView: View {
 }
 
 #Preview {
-    SignUpView()
+    SignUpView(viewModel: .init())
 }

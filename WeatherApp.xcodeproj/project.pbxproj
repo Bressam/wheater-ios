@@ -27,6 +27,7 @@
 		1855BB2D2C156A47005E2C5A /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855BB2C2C156A47005E2C5A /* WeatherViewModel.swift */; };
 		187E777F2C15723F000BF9E4 /* FavoriteLocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E777E2C15723F000BF9E4 /* FavoriteLocationsViewModel.swift */; };
 		187E77822C15782C000BF9E4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E77812C15782C000BF9E4 /* LocationManager.swift */; };
+		188FA1942C2A663B00D6B0E6 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188FA1932C2A663B00D6B0E6 /* SignUpViewModel.swift */; };
 		18F0305E2C127913003A7943 /* WeatherAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F0305D2C127913003A7943 /* WeatherAppApp.swift */; };
 		18F030602C127913003A7943 /* FavoriteLocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F0305F2C127913003A7943 /* FavoriteLocationsView.swift */; };
 		18F030622C127915003A7943 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F030612C127915003A7943 /* Assets.xcassets */; };
@@ -53,6 +54,7 @@
 		1855BB2C2C156A47005E2C5A /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		187E777E2C15723F000BF9E4 /* FavoriteLocationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteLocationsViewModel.swift; sourceTree = "<group>"; };
 		187E77812C15782C000BF9E4 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		188FA1932C2A663B00D6B0E6 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		18F0305A2C127913003A7943 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F0305D2C127913003A7943 /* WeatherAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppApp.swift; sourceTree = "<group>"; };
 		18F0305F2C127913003A7943 /* FavoriteLocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteLocationsView.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				182B15682C2A4D7500AF3EB2 /* SignUpView.swift */,
+				188FA1932C2A663B00D6B0E6 /* SignUpViewModel.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				187E777F2C15723F000BF9E4 /* FavoriteLocationsViewModel.swift in Sources */,
 				182B156C2C2A4D8E00AF3EB2 /* BottomSheetView.swift in Sources */,
 				1855BB222C15563D005E2C5A /* WheaterServiceFactory.swift in Sources */,
+				188FA1942C2A663B00D6B0E6 /* SignUpViewModel.swift in Sources */,
 				18F030672C127915003A7943 /* Persistence.swift in Sources */,
 				187E77822C15782C000BF9E4 /* LocationManager.swift in Sources */,
 				1855BB1B2C15544C005E2C5A /* WheaterService.swift in Sources */,
