@@ -13,9 +13,9 @@ struct FavoriteLocationsView: View {
     @Environment(\.managedObjectContext) private var viewContext
 
     @FetchRequest(
-        sortDescriptors: [NSSortDescriptor(keyPath: \FavoriteLocation.creationDate, ascending: true)],
+        sortDescriptors: [NSSortDescriptor(keyPath: \FavoriteLocationCoreData.creationDate, ascending: true)],
         animation: .default)
-    private var items: FetchedResults<FavoriteLocation>
+    private var items: FetchedResults<FavoriteLocationCoreData>
     
     @ObservedObject var viewModel: FavoriteLocationsViewModel
     
@@ -32,12 +32,16 @@ struct FavoriteLocationsView: View {
                     .init(red: 2 / 255, green: 0 / 255, blue: 36 / 255),
                     .init(red: 9 / 255, green: 9 / 255, blue: 121 / 255)
                 ]))
-        }
+        }.onAppear(perform: {
+            Task {
+                await viewModel.fetchFavoriteLocations()
+            }
+        })
     }
     
     private var contentList: some View {
         List {
-            if items.isEmpty {
+            if viewModel.favoriteLocations.isEmpty {
                 ContentUnavailableView {
                     Label("No favorite locations yet!",
                           systemImage: "list.bullet.below.rectangle")
@@ -46,7 +50,7 @@ struct FavoriteLocationsView: View {
                 }
                 
             } else {
-                ForEach(items) { item in
+                ForEach(viewModel.favoriteLocations) { item in
                     NavigationLink {
                         WeatherView(viewModel: viewModel.getWeatherViewModel(for: item))
                     } label: {
@@ -73,7 +77,7 @@ struct FavoriteLocationsView: View {
     private func addItem() {
         withAnimation {
         Task {
-            let newItem = FavoriteLocation(context: viewContext)
+            let newItem = FavoriteLocationCoreData(context: viewContext)
             newItem.creationDate = Date()
             let currentLocationData = try await viewModel.getCurrentLocationData()
             newItem.cityName = currentLocationData.cityName
@@ -117,6 +121,8 @@ private let itemFormatter: DateFormatter = {
 
 #Preview {
     let mockedService = WeatherServiceFactory.shared.createWeatherService(mocked: true)
-    return FavoriteLocationsView(viewModel: .init(weatherService: mockedService))
+    let mockedLocationProvider = FavoriteLocationProviderFactory.shared.createProvider(type: .mocked)
+
+    return FavoriteLocationsView(viewModel: .init(weatherService: mockedService, favoriteLocationsProvider: mockedLocationProvider))
         .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
 }

@@ -33,7 +33,8 @@ struct WeatherAppApp: App {
                 TabView {
                     WeatherView(viewModel: .init(weatherService: weatherService))
                         .tabItem { Label("Current weather", systemImage: "sun.haze.fill") }
-                    FavoriteLocationsView(viewModel: .init(weatherService: weatherService))
+                    FavoriteLocationsView(viewModel: .init(weatherService: weatherService,
+                                                           favoriteLocationsProvider: FavoriteLocationProviderFactory.shared.createProvider(type: .local)))
                         .environment(\.managedObjectContext, persistenceController.container.viewContext)
                         .tabItem { Label("Favorite locations", systemImage: "list.bullet.below.rectangle") }
                 }

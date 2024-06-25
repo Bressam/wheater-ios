@@ -14,7 +14,7 @@ struct PersistenceController {
         let result = PersistenceController(inMemory: true)
         let viewContext = result.container.viewContext
         for _ in 0..<10 {
-            let newItem = FavoriteLocation(context: viewContext)
+            let newItem = FavoriteLocationCoreData(context: viewContext)
             newItem.creationDate = Date()
         }
         do {
@@ -29,6 +29,9 @@ struct PersistenceController {
     }()
 
     let container: NSPersistentContainer
+    var containerContext: NSManagedObjectContext {
+        return container.viewContext
+    }
 
     init(inMemory: Bool = false) {
         container = NSPersistentContainer(name: "WeatherApp")
