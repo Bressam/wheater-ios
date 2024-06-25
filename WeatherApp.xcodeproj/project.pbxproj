@@ -13,6 +13,10 @@
 		182B15702C2A4DA400AF3EB2 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B156F2C2A4DA400AF3EB2 /* PrimaryButton.swift */; };
 		182B15722C2A4DAF00AF3EB2 /* PrimaryTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B15712C2A4DAF00AF3EB2 /* PrimaryTextField.swift */; };
 		182B15752C2A4DC600AF3EB2 /* LayoutConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B15742C2A4DC600AF3EB2 /* LayoutConstants.swift */; };
+		182B15802C2A633C00AF3EB2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 182B157F2C2A633C00AF3EB2 /* GoogleService-Info.plist */; };
+		182B15832C2A638000AF3EB2 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 182B15822C2A638000AF3EB2 /* FirebaseAnalytics */; };
+		182B15852C2A638000AF3EB2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 182B15842C2A638000AF3EB2 /* FirebaseAuth */; };
+		182B15872C2A638000AF3EB2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 182B15862C2A638000AF3EB2 /* FirebaseFirestore */; };
 		1855BB1B2C15544C005E2C5A /* WheaterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855BB1A2C15544C005E2C5A /* WheaterService.swift */; };
 		1855BB1D2C15545E005E2C5A /* WheaterProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855BB1C2C15545E005E2C5A /* WheaterProvider.swift */; };
 		1855BB222C15563D005E2C5A /* WheaterServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855BB212C15563D005E2C5A /* WheaterServiceFactory.swift */; };
@@ -38,6 +42,7 @@
 		182B156F2C2A4DA400AF3EB2 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
 		182B15712C2A4DAF00AF3EB2 /* PrimaryTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryTextField.swift; sourceTree = "<group>"; };
 		182B15742C2A4DC600AF3EB2 /* LayoutConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutConstants.swift; sourceTree = "<group>"; };
+		182B157F2C2A633C00AF3EB2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1855BB1A2C15544C005E2C5A /* WheaterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheaterService.swift; sourceTree = "<group>"; };
 		1855BB1C2C15545E005E2C5A /* WheaterProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheaterProvider.swift; sourceTree = "<group>"; };
 		1855BB212C15563D005E2C5A /* WheaterServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheaterServiceFactory.swift; sourceTree = "<group>"; };
@@ -62,6 +67,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				182B15832C2A638000AF3EB2 /* FirebaseAnalytics in Frameworks */,
+				182B15852C2A638000AF3EB2 /* FirebaseAuth in Frameworks */,
+				182B15872C2A638000AF3EB2 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -203,6 +211,7 @@
 		18F0305C2C127913003A7943 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				182B157F2C2A633C00AF3EB2 /* GoogleService-Info.plist */,
 				18F0305D2C127913003A7943 /* WeatherAppApp.swift */,
 				18F030612C127915003A7943 /* Assets.xcassets */,
 				182B156A2C2A4D7F00AF3EB2 /* Components */,
@@ -241,6 +250,11 @@
 			dependencies = (
 			);
 			name = WeatherApp;
+			packageProductDependencies = (
+				182B15822C2A638000AF3EB2 /* FirebaseAnalytics */,
+				182B15842C2A638000AF3EB2 /* FirebaseAuth */,
+				182B15862C2A638000AF3EB2 /* FirebaseFirestore */,
+			);
 			productName = WeatherApp;
 			productReference = 18F0305A2C127913003A7943 /* WeatherApp.app */;
 			productType = "com.apple.product-type.application";
@@ -269,6 +283,9 @@
 				Base,
 			);
 			mainGroup = 18F030512C127913003A7943;
+			packageReferences = (
+				182B15812C2A638000AF3EB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 18F0305B2C127913003A7943 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -285,6 +302,7 @@
 			files = (
 				18F030652C127915003A7943 /* Preview Assets.xcassets in Resources */,
 				18F030622C127915003A7943 /* Assets.xcassets in Resources */,
+				182B15802C2A633C00AF3EB2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,7 +481,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.bressam.WeatherApp;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.bressam.weatherapp.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -494,7 +512,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.bressam.WeatherApp;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.bressam.weatherapp.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -524,6 +542,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		182B15812C2A638000AF3EB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.28.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		182B15822C2A638000AF3EB2 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 182B15812C2A638000AF3EB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		182B15842C2A638000AF3EB2 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 182B15812C2A638000AF3EB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		182B15862C2A638000AF3EB2 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 182B15812C2A638000AF3EB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		18F030682C127915003A7943 /* WeatherApp.xcdatamodeld */ = {

@@ -6,9 +6,22 @@
 //
 
 import SwiftUI
+import FirebaseCore
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        FirebaseApp.configure()
+        
+        return true
+    }
+}
 
 @main
 struct WeatherAppApp: App {
+    // MARK: - AppDelegate
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+
     // MARK: - Services
     let persistenceController = PersistenceController.shared
     let weatherService: WeatherService
