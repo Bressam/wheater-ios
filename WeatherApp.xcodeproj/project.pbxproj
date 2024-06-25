@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		182B15692C2A4D7500AF3EB2 /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B15682C2A4D7500AF3EB2 /* SignUpView.swift */; };
+		182B156C2C2A4D8E00AF3EB2 /* BottomSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B156B2C2A4D8E00AF3EB2 /* BottomSheetView.swift */; };
+		182B156E2C2A4D9900AF3EB2 /* GradientHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B156D2C2A4D9900AF3EB2 /* GradientHeaderView.swift */; };
+		182B15702C2A4DA400AF3EB2 /* PrimaryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B156F2C2A4DA400AF3EB2 /* PrimaryButton.swift */; };
+		182B15722C2A4DAF00AF3EB2 /* PrimaryTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B15712C2A4DAF00AF3EB2 /* PrimaryTextField.swift */; };
+		182B15752C2A4DC600AF3EB2 /* LayoutConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 182B15742C2A4DC600AF3EB2 /* LayoutConstants.swift */; };
+		182B15802C2A633C00AF3EB2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 182B157F2C2A633C00AF3EB2 /* GoogleService-Info.plist */; };
+		182B15832C2A638000AF3EB2 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 182B15822C2A638000AF3EB2 /* FirebaseAnalytics */; };
+		182B15852C2A638000AF3EB2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 182B15842C2A638000AF3EB2 /* FirebaseAuth */; };
+		182B15872C2A638000AF3EB2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 182B15862C2A638000AF3EB2 /* FirebaseFirestore */; };
 		1855BB1B2C15544C005E2C5A /* WheaterService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855BB1A2C15544C005E2C5A /* WheaterService.swift */; };
 		1855BB1D2C15545E005E2C5A /* WheaterProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855BB1C2C15545E005E2C5A /* WheaterProvider.swift */; };
 		1855BB222C15563D005E2C5A /* WheaterServiceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855BB212C15563D005E2C5A /* WheaterServiceFactory.swift */; };
@@ -17,6 +27,14 @@
 		1855BB2D2C156A47005E2C5A /* WeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1855BB2C2C156A47005E2C5A /* WeatherViewModel.swift */; };
 		187E777F2C15723F000BF9E4 /* FavoriteLocationsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E777E2C15723F000BF9E4 /* FavoriteLocationsViewModel.swift */; };
 		187E77822C15782C000BF9E4 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 187E77812C15782C000BF9E4 /* LocationManager.swift */; };
+		188FA1942C2A663B00D6B0E6 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 188FA1932C2A663B00D6B0E6 /* SignUpViewModel.swift */; };
+		18D7E8E62C2B541A00817FCD /* FavoriteLocationsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D7E8E52C2B541A00817FCD /* FavoriteLocationsProvider.swift */; };
+		18D7E8E82C2B550D00817FCD /* CoreDataFavoriteLocationsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D7E8E72C2B550D00817FCD /* CoreDataFavoriteLocationsProvider.swift */; };
+		18D7E8EA2C2B554300817FCD /* FirebaseFavoriteLocationsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D7E8E92C2B554300817FCD /* FirebaseFavoriteLocationsProvider.swift */; };
+		18D7E8EC2C2B580000817FCD /* FavoriteLocationProviderFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D7E8EB2C2B580000817FCD /* FavoriteLocationProviderFactory.swift */; };
+		18D7E8F02C2B58FA00817FCD /* MockedFavoriteLocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D7E8EF2C2B58FA00817FCD /* MockedFavoriteLocationProvider.swift */; };
+		18D7E8F22C2B59CB00817FCD /* FavoriteLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D7E8F12C2B59CB00817FCD /* FavoriteLocation.swift */; };
+		18D7E8F42C2B668D00817FCD /* LocationCoordinateFireStorm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D7E8F32C2B668D00817FCD /* LocationCoordinateFireStorm.swift */; };
 		18F0305E2C127913003A7943 /* WeatherAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F0305D2C127913003A7943 /* WeatherAppApp.swift */; };
 		18F030602C127913003A7943 /* FavoriteLocationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18F0305F2C127913003A7943 /* FavoriteLocationsView.swift */; };
 		18F030622C127915003A7943 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18F030612C127915003A7943 /* Assets.xcassets */; };
@@ -26,6 +44,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		182B15682C2A4D7500AF3EB2 /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
+		182B156B2C2A4D8E00AF3EB2 /* BottomSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetView.swift; sourceTree = "<group>"; };
+		182B156D2C2A4D9900AF3EB2 /* GradientHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientHeaderView.swift; sourceTree = "<group>"; };
+		182B156F2C2A4DA400AF3EB2 /* PrimaryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryButton.swift; sourceTree = "<group>"; };
+		182B15712C2A4DAF00AF3EB2 /* PrimaryTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrimaryTextField.swift; sourceTree = "<group>"; };
+		182B15742C2A4DC600AF3EB2 /* LayoutConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LayoutConstants.swift; sourceTree = "<group>"; };
+		182B157F2C2A633C00AF3EB2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		1855BB1A2C15544C005E2C5A /* WheaterService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheaterService.swift; sourceTree = "<group>"; };
 		1855BB1C2C15545E005E2C5A /* WheaterProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheaterProvider.swift; sourceTree = "<group>"; };
 		1855BB212C15563D005E2C5A /* WheaterServiceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheaterServiceFactory.swift; sourceTree = "<group>"; };
@@ -36,6 +61,14 @@
 		1855BB2C2C156A47005E2C5A /* WeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherViewModel.swift; sourceTree = "<group>"; };
 		187E777E2C15723F000BF9E4 /* FavoriteLocationsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteLocationsViewModel.swift; sourceTree = "<group>"; };
 		187E77812C15782C000BF9E4 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		188FA1932C2A663B00D6B0E6 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		18D7E8E52C2B541A00817FCD /* FavoriteLocationsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteLocationsProvider.swift; sourceTree = "<group>"; };
+		18D7E8E72C2B550D00817FCD /* CoreDataFavoriteLocationsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataFavoriteLocationsProvider.swift; sourceTree = "<group>"; };
+		18D7E8E92C2B554300817FCD /* FirebaseFavoriteLocationsProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseFavoriteLocationsProvider.swift; sourceTree = "<group>"; };
+		18D7E8EB2C2B580000817FCD /* FavoriteLocationProviderFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteLocationProviderFactory.swift; sourceTree = "<group>"; };
+		18D7E8EF2C2B58FA00817FCD /* MockedFavoriteLocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockedFavoriteLocationProvider.swift; sourceTree = "<group>"; };
+		18D7E8F12C2B59CB00817FCD /* FavoriteLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteLocation.swift; sourceTree = "<group>"; };
+		18D7E8F32C2B668D00817FCD /* LocationCoordinateFireStorm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationCoordinateFireStorm.swift; sourceTree = "<group>"; };
 		18F0305A2C127913003A7943 /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F0305D2C127913003A7943 /* WeatherAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherAppApp.swift; sourceTree = "<group>"; };
 		18F0305F2C127913003A7943 /* FavoriteLocationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteLocationsView.swift; sourceTree = "<group>"; };
@@ -50,15 +83,47 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				182B15832C2A638000AF3EB2 /* FirebaseAnalytics in Frameworks */,
+				182B15852C2A638000AF3EB2 /* FirebaseAuth in Frameworks */,
+				182B15872C2A638000AF3EB2 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		182B15672C2A4D3F00AF3EB2 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				182B15682C2A4D7500AF3EB2 /* SignUpView.swift */,
+				188FA1932C2A663B00D6B0E6 /* SignUpViewModel.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
+		182B156A2C2A4D7F00AF3EB2 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				182B156B2C2A4D8E00AF3EB2 /* BottomSheetView.swift */,
+				182B156D2C2A4D9900AF3EB2 /* GradientHeaderView.swift */,
+				182B156F2C2A4DA400AF3EB2 /* PrimaryButton.swift */,
+				182B15712C2A4DAF00AF3EB2 /* PrimaryTextField.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		182B15732C2A4DBB00AF3EB2 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				182B15742C2A4DC600AF3EB2 /* LayoutConstants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		1855BB162C1553C8005E2C5A /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				182B15672C2A4D3F00AF3EB2 /* SignUp */,
 				187E777D2C157236000BF9E4 /* FavoriteLocationsView */,
 				1855BB292C156A29005E2C5A /* WeatherView */,
 			);
@@ -69,6 +134,8 @@
 			isa = PBXGroup;
 			children = (
 				1855BB232C1556CF005E2C5A /* LocationWheater.swift */,
+				18D7E8F12C2B59CB00817FCD /* FavoriteLocation.swift */,
+				18D7E8F32C2B668D00817FCD /* LocationCoordinateFireStorm.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -85,6 +152,7 @@
 		1855BB192C1553EA005E2C5A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				18D7E8E42C2B53ED00817FCD /* Storage */,
 				187E77802C157821000BF9E4 /* Location */,
 				1855BB1F2C15546F005E2C5A /* Wheater */,
 			);
@@ -114,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				1855BB212C15563D005E2C5A /* WheaterServiceFactory.swift */,
+				18D7E8EB2C2B580000817FCD /* FavoriteLocationProviderFactory.swift */,
 			);
 			path = Factories;
 			sourceTree = "<group>";
@@ -144,6 +213,33 @@
 			path = Location;
 			sourceTree = "<group>";
 		};
+		18D7E8E42C2B53ED00817FCD /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				18D7E8EE2C2B58EE00817FCD /* Implementations */,
+				18D7E8ED2C2B58E900817FCD /* Interface */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
+		18D7E8ED2C2B58E900817FCD /* Interface */ = {
+			isa = PBXGroup;
+			children = (
+				18D7E8E52C2B541A00817FCD /* FavoriteLocationsProvider.swift */,
+			);
+			path = Interface;
+			sourceTree = "<group>";
+		};
+		18D7E8EE2C2B58EE00817FCD /* Implementations */ = {
+			isa = PBXGroup;
+			children = (
+				18D7E8E72C2B550D00817FCD /* CoreDataFavoriteLocationsProvider.swift */,
+				18D7E8E92C2B554300817FCD /* FirebaseFavoriteLocationsProvider.swift */,
+				18D7E8EF2C2B58FA00817FCD /* MockedFavoriteLocationProvider.swift */,
+			);
+			path = Implementations;
+			sourceTree = "<group>";
+		};
 		18F030512C127913003A7943 = {
 			isa = PBXGroup;
 			children = (
@@ -163,14 +259,17 @@
 		18F0305C2C127913003A7943 /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				182B157F2C2A633C00AF3EB2 /* GoogleService-Info.plist */,
 				18F0305D2C127913003A7943 /* WeatherAppApp.swift */,
 				18F030612C127915003A7943 /* Assets.xcassets */,
+				182B156A2C2A4D7F00AF3EB2 /* Components */,
 				1855BB182C1553D6005E2C5A /* Database */,
 				1855BB202C155615005E2C5A /* Factories */,
 				1855BB172C1553D1005E2C5A /* Model */,
 				18F030632C127915003A7943 /* Preview Content */,
 				1855BB162C1553C8005E2C5A /* Scenes */,
 				1855BB192C1553EA005E2C5A /* Services */,
+				182B15732C2A4DBB00AF3EB2 /* Utils */,
 			);
 			path = WeatherApp;
 			sourceTree = "<group>";
@@ -199,6 +298,11 @@
 			dependencies = (
 			);
 			name = WeatherApp;
+			packageProductDependencies = (
+				182B15822C2A638000AF3EB2 /* FirebaseAnalytics */,
+				182B15842C2A638000AF3EB2 /* FirebaseAuth */,
+				182B15862C2A638000AF3EB2 /* FirebaseFirestore */,
+			);
 			productName = WeatherApp;
 			productReference = 18F0305A2C127913003A7943 /* WeatherApp.app */;
 			productType = "com.apple.product-type.application";
@@ -227,6 +331,9 @@
 				Base,
 			);
 			mainGroup = 18F030512C127913003A7943;
+			packageReferences = (
+				182B15812C2A638000AF3EB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 18F0305B2C127913003A7943 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -243,6 +350,7 @@
 			files = (
 				18F030652C127915003A7943 /* Preview Assets.xcassets in Resources */,
 				18F030622C127915003A7943 /* Assets.xcassets in Resources */,
+				182B15802C2A633C00AF3EB2 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,20 +361,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				182B15702C2A4DA400AF3EB2 /* PrimaryButton.swift in Sources */,
+				18D7E8EC2C2B580000817FCD /* FavoriteLocationProviderFactory.swift in Sources */,
 				1855BB2B2C156A3D005E2C5A /* WeatherView.swift in Sources */,
+				182B15692C2A4D7500AF3EB2 /* SignUpView.swift in Sources */,
+				18D7E8F42C2B668D00817FCD /* LocationCoordinateFireStorm.swift in Sources */,
 				1855BB2D2C156A47005E2C5A /* WeatherViewModel.swift in Sources */,
+				182B15722C2A4DAF00AF3EB2 /* PrimaryTextField.swift in Sources */,
 				18F0306A2C127915003A7943 /* WeatherApp.xcdatamodeld in Sources */,
 				1855BB242C1556CF005E2C5A /* LocationWheater.swift in Sources */,
+				18D7E8E62C2B541A00817FCD /* FavoriteLocationsProvider.swift in Sources */,
 				1855BB262C155C97005E2C5A /* RemoteWheaterProvider.swift in Sources */,
 				1855BB282C155D3E005E2C5A /* WheaterProviderMock.swift in Sources */,
 				1855BB1D2C15545E005E2C5A /* WheaterProvider.swift in Sources */,
 				187E777F2C15723F000BF9E4 /* FavoriteLocationsViewModel.swift in Sources */,
+				182B156C2C2A4D8E00AF3EB2 /* BottomSheetView.swift in Sources */,
+				18D7E8F22C2B59CB00817FCD /* FavoriteLocation.swift in Sources */,
+				18D7E8F02C2B58FA00817FCD /* MockedFavoriteLocationProvider.swift in Sources */,
 				1855BB222C15563D005E2C5A /* WheaterServiceFactory.swift in Sources */,
+				188FA1942C2A663B00D6B0E6 /* SignUpViewModel.swift in Sources */,
 				18F030672C127915003A7943 /* Persistence.swift in Sources */,
 				187E77822C15782C000BF9E4 /* LocationManager.swift in Sources */,
 				1855BB1B2C15544C005E2C5A /* WheaterService.swift in Sources */,
+				18D7E8EA2C2B554300817FCD /* FirebaseFavoriteLocationsProvider.swift in Sources */,
+				18D7E8E82C2B550D00817FCD /* CoreDataFavoriteLocationsProvider.swift in Sources */,
+				182B156E2C2A4D9900AF3EB2 /* GradientHeaderView.swift in Sources */,
 				18F030602C127913003A7943 /* FavoriteLocationsView.swift in Sources */,
 				18F0305E2C127913003A7943 /* WeatherAppApp.swift in Sources */,
+				182B15752C2A4DC600AF3EB2 /* LayoutConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,7 +537,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.bressam.WeatherApp;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.bressam.weatherapp.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -446,7 +568,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = dev.bressam.WeatherApp;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.bressam.weatherapp.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -476,6 +598,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		182B15812C2A638000AF3EB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.28.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		182B15822C2A638000AF3EB2 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 182B15812C2A638000AF3EB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		182B15842C2A638000AF3EB2 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 182B15812C2A638000AF3EB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		182B15862C2A638000AF3EB2 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 182B15812C2A638000AF3EB2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		18F030682C127915003A7943 /* WeatherApp.xcdatamodeld */ = {
