@@ -7,8 +7,38 @@
 
 import Foundation
 import FirebaseFirestore
+import FirebaseCore
+import FirebaseAuth
 
 class SignUpViewModel {
+    
+    func createAccount(email: String, password: String) async -> Bool {
+        print("\(email) & \(password)")
+        do {
+            let authDataResult = try await Auth.auth().createUser(withEmail: email, password: password)
+            print("Sucesso!")
+            print(authDataResult)
+            return true
+        } catch {
+            print("Erro! \n \(error)")
+            return false
+        }
+    }
+    
+    func login(email: String, password: String) async -> Bool {
+        print("\(email) & \(password)")
+        do {
+            let authDataResult = try await Auth.auth().signIn(withEmail: email, password: password)
+            print("Sucesso!")
+            print(authDataResult)
+            return true
+        } catch {
+            print("Erro! \n \(error)")
+            return false
+        }
+    }
+    
+    // MARK: - Firebase test code
     let db = Firestore.firestore()
     lazy var locationsRef = db.collection("locations")
     
