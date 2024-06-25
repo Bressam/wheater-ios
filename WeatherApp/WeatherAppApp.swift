@@ -12,17 +12,24 @@ struct WeatherAppApp: App {
     // MARK: - Services
     let persistenceController = PersistenceController.shared
     let weatherService: WeatherService
+    @State var isSignedIn: Bool = false
 
     var body: some Scene {
         WindowGroup {
-            TabView {
-                WeatherView(viewModel: .init(weatherService: weatherService))
-                    .tabItem { Label("Current weather", systemImage: "sun.haze.fill") }
-                FavoriteLocationsView(viewModel: .init(weatherService: weatherService))
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                    .tabItem { Label("Favorite locations", systemImage: "list.bullet.below.rectangle") }
+            if isSignedIn {
+                TabView {
+                    WeatherView(viewModel: .init(weatherService: weatherService))
+                        .tabItem { Label("Current weather", systemImage: "sun.haze.fill") }
+                    FavoriteLocationsView(viewModel: .init(weatherService: weatherService))
+                        .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                        .tabItem { Label("Favorite locations", systemImage: "list.bullet.below.rectangle") }
+                }
+                .tint(.yellow)
+            } else {
+                SignUpView {
+                    isSignedIn.toggle()
+                }
             }
-            .tint(.yellow)
         }
     }
     
